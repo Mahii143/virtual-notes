@@ -4,13 +4,16 @@ import speech_recognition as sr
 from datetime import datetime
 from datetime import date
 
+
 today = date.today()
 #print("Today's date:", today)
 
 now = datetime.now()
 current_time = now.strftime("%H:%M:%S")
+curr_time = now.strftime("%H-%M-%S")
 current_time1 = str(today)+str(current_time)
-
+filename = str(today)+"_"+str(curr_time)+".txt"
+#function for the conversion
 def recorder():
 
     r = sr.Recognizer()
@@ -27,7 +30,7 @@ def recorder():
 
 
         #os.remove("mahir.txt")
-        file = open("mahir.pdf",'w+')
+        file = open(filename,'w+')
         
         file.writelines(current_time1)
         file.writelines("\n")
