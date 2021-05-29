@@ -63,6 +63,7 @@ win.title("Virtual Notes")
 
 #menu bar
 menu_bar= Menu(win)
+
 #submenu
 
 file = Menu(menu_bar, tearoff=0)  
@@ -96,9 +97,8 @@ menu_bar.add_cascade(label="Help", menu=help)
 win.config(menu=menu_bar)  
 
  
-'''
-code above
-'''
+#page 1 accessories
+
 login_label = Label(win, text = "Login", fg="blue",
                     font = ("Poppins", 15)).place(x=210,y=50)
 
@@ -113,7 +113,7 @@ e2.place(x=220,y=150)
 
 
 
-    
+#calling the function of first page    
 page1(win)
 pagenum = 1
 
