@@ -5,7 +5,6 @@ from tkinter import ttk
 from tkinter import messagebox
 import tkinter as tk
 from recognition_module import recorder
-from recognition_module import count
 
 
 
@@ -25,13 +24,20 @@ def page1(win):
     submit = Button(win, text = "Submit", command=changepage)
     submit.place(x=210,y=200)
 
+def rec():
+    started = Label(win, text = "Recording ended",fg="red")
+    started.place(x=210,y=150)
+    recorder()
 
 def page2(win):
+    global count
     page = tk.Frame(win)
     page.grid()
     tk.Label(page, text = 'This is page 2').grid(row = 0)
-    record = Button(win, text = "Record", command = recorder)
+    record = Button(win, text = "Record", command = rec)
     record.place(x=210,y=120)
+    
+    
     
 
 def changepage():

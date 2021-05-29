@@ -1,23 +1,25 @@
-import encodings.idna
-
+#import encodings.idna
+import os
 import speech_recognition as sr
-global count
-count = 0
-
-
+global text
 def recorder():
-    global count
+    global text
     r = sr.Recognizer()
 
     with sr.Microphone() as source:
+        
         # read the audio data from the default microphone
-        count = 1
         audio_data = r.record(source, duration=10)
         print("Recognizing...")
+        
         # convert speech to text
         text = r.recognize_google(audio_data)
-        print(text)
+        
 
-#        print("Text: "+r.recognize_google(audio_data, language = "ta-IN"))
+
+recorder()
+file = open("mahir.pdf",'w+')
+file.writelines(text)
+file.close()
 
 
