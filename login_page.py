@@ -24,20 +24,13 @@ def page1(win):
     submit = Button(win, text = "Submit", command=changepage)
     submit.place(x=210,y=200)
 
-def rec():
-    started = Label(win, text = "Recording ended",fg="red")
-    started.place(x=210,y=150)
-    recorder()
 
 def page2(win):
-    global count
     page = tk.Frame(win)
     page.grid()
     tk.Label(page, text = 'This is page 2').grid(row = 0)
-    record = Button(win, text = "Record", command = rec)
+    record = Button(win, text = "Record", command = recorder)
     record.place(x=210,y=120)
-    
-    
     
 
 def changepage():
@@ -103,6 +96,7 @@ menu_bar.add_cascade(label="Help", menu=help)
 win.config(menu=menu_bar)  
 
  
+
 #page 1 accessories
 
 login_label = Label(win, text = "Login", fg="blue",

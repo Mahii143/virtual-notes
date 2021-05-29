@@ -1,9 +1,18 @@
 #import encodings.idna
 import os
 import speech_recognition as sr
-global text
+from datetime import datetime
+from datetime import date
+
+today = date.today()
+print("Today's date:", today)
+
+now = datetime.now()
+current_time = now.strftime("%H:%M:%S")
+current_time1 = str(today)+str(current_time)
+
 def recorder():
-    global text
+
     r = sr.Recognizer()
 
     with sr.Microphone() as source:
@@ -14,12 +23,16 @@ def recorder():
         
         # convert speech to text
         text = r.recognize_google(audio_data)
+        print("user said: {0}".format(text))
+
+
+        #os.remove("mahir.txt")
+        file = open("mahir.pdf",'w+')
         
-
-
-recorder()
-file = open("mahir.pdf",'w+')
-file.writelines(text)
-file.close()
+        file.writelines(current_time1)
+        file.writelines("\n")
+        file.writelines(text)
+        file.writelines("\n")
+        file.close()
 
 
