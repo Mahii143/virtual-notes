@@ -14,6 +14,8 @@ global e2
 global names
 global passes
 password = 0
+
+#temporary usernames and passwords
 names = ['mahir','jeevan','keerthikashri','shanmuga','venu']
 passes = [123,1234]
 
