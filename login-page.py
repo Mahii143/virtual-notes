@@ -15,29 +15,49 @@ global passes
 names = ['mahir','jeevan','keerthikashri','shanmuga','venu']
 passes = [123,1234]
 
+def page1(win):
+    page = tk.Frame(win)
+    page.grid()
+    submit = Button(win, text = "Submit", command=changepage)
+    submit.place(x=210,y=200)
+
+def page2(win):
+    page = tk.Frame(win)
+    page.grid()
+    tk.Label(page, text = 'This is page 2').grid(row = 0)
+    submit = Button(win, text = "Submit")
+    submit.place(x=210,y=100)
+
+def changepage():
+    global pagenum, win
+    for widget in win.winfo_children():
+        widget.destroy()
+    if pagenum == 1:
+        page2(win)
+        pagenum=0
+    #else:
+     #   page1(win)
+      #  pagenum = 1
+
+pagenum = 1
+
+
 def about():
     messagebox.showinfo("About Us","Team Infernos-Cicada 3301: Reinvented")
 
 def openNewWindow():
-
-
         username = str(e1.get())
-        
-
-
         if username == "":
             messagebox.showinfo("Alert","Enter username")
-            
-
-        
         else:
             if username in names:
-            
                 password = e2.get()
                 password = int(password)
                 if password in passes:
                     newWindow = Toplevel(win)
                     newWindow.title("New Window")
+                    win.destroy()
+                    
 
                     
 
@@ -56,7 +76,7 @@ from tkinter.ttk import *
 master = Tk()
 
 # sets the geometry of main
-# root window
+# win window
 master.geometry("200x200")
 
 
@@ -183,9 +203,9 @@ password.place(x=132,y=150)
 e2 = Entry(win)
 e2.place(x=220,y=150)
 
-submit = Button(win, text = "Submit", command=openNewWindow)
-submit.place(x=210,y=200)
+
     
+page1(win)
 win.mainloop()
 
     
