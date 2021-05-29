@@ -11,7 +11,7 @@ today = date.today()
 now = datetime.now()
 current_time = now.strftime("%H:%M:%S")
 curr_time = now.strftime("%H-%M-%S")
-current_time1 = str(today)+str(current_time)
+current_time1 = str(today)+"/"+str(current_time)
 filename = str(today)+"_"+str(curr_time)+".txt"
 #function for the conversion
 def recorder():
