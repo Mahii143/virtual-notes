@@ -17,6 +17,7 @@ def recorder():
         # convert speech to text
         text = r.recognize_google(audio_data)
         print(text)
+
 #        print("Text: "+r.recognize_google(audio_data, language = "ta-IN"))
 
 
