@@ -4,6 +4,7 @@ from tkinter import Tk, Menu
 from tkinter import ttk
 from tkinter import messagebox
 import tkinter as tk
+from recognition_module import recorder
 
 
 
@@ -12,8 +13,13 @@ global e1
 global e2
 global names
 global passes
+password = 0
 names = ['mahir','jeevan','keerthikashri','shanmuga','venu']
 passes = [123,1234]
+
+def show():
+    started = Label(win,text="Recording started...",fg="red")
+    started.place(x=210,y=140)
 
 def page1(win):
     page = tk.Frame(win)
@@ -21,31 +27,40 @@ def page1(win):
     submit = Button(win, text = "Submit", command=changepage)
     submit.place(x=210,y=200)
 
+
 def page2(win):
     page = tk.Frame(win)
     page.grid()
     tk.Label(page, text = 'This is page 2').grid(row = 0)
-    submit = Button(win, text = "Submit")
-    submit.place(x=210,y=100)
+    record = Button(win, text = "Record", command = recorder)
+    record.place(x=210,y=120)
 
 def changepage():
     global pagenum, win
-    for widget in win.winfo_children():
-        widget.destroy()
-    if pagenum == 1:
-        page2(win)
-        pagenum=0
-    #else:
-     #   page1(win)
-      #  pagenum = 1
 
-pagenum = 1
-
-
+    username = str(e1.get())
+    if username != "":
+        password = int(e2.get())
+    
+    if username == "":
+        messagebox.showinfo("Alert","Enter username")
+    else:
+        if username!="" and password!=0:
+            if password in passes:
+                for widget in win.winfo_children():
+                    widget.destroy()
+                if pagenum == 1:
+                    page2(win)
+                    pagenum=0
+                   
+    
+    
 def about():
     messagebox.showinfo("About Us","Team Infernos-Cicada 3301: Reinvented")
-
+    
+'''
 def openNewWindow():
+    
         username = str(e1.get())
         if username == "":
             messagebox.showinfo("Alert","Enter username")
@@ -59,7 +74,7 @@ def openNewWindow():
                     win.destroy()
                     
 
-                    
+'''                 
 
 #front end
 
@@ -204,8 +219,11 @@ e2 = Entry(win)
 e2.place(x=220,y=150)
 
 
+
     
 page1(win)
+pagenum = 1
+
 win.mainloop()
 
     
