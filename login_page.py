@@ -5,6 +5,7 @@ from tkinter import ttk
 from tkinter import messagebox
 import tkinter as tk
 from recognition_module import recorder
+from recognition_module import count
 
 
 
@@ -17,9 +18,6 @@ password = 0
 names = ['mahir','jeevan','keerthikashri','shanmuga','venu']
 passes = [123,1234]
 
-def show():
-    started = Label(win,text="Recording started...",fg="red")
-    started.place(x=210,y=140)
 
 def page1(win):
     page = tk.Frame(win)
@@ -34,6 +32,7 @@ def page2(win):
     tk.Label(page, text = 'This is page 2').grid(row = 0)
     record = Button(win, text = "Record", command = recorder)
     record.place(x=210,y=120)
+    
 
 def changepage():
     global pagenum, win
@@ -52,101 +51,10 @@ def changepage():
                 if pagenum == 1:
                     page2(win)
                     pagenum=0
-                   
     
     
 def about():
     messagebox.showinfo("About Us","Team Infernos-Cicada 3301: Reinvented")
-    
-'''
-def openNewWindow():
-    
-        username = str(e1.get())
-        if username == "":
-            messagebox.showinfo("Alert","Enter username")
-        else:
-            if username in names:
-                password = e2.get()
-                password = int(password)
-                if password in passes:
-                    newWindow = Toplevel(win)
-                    newWindow.title("New Window")
-                    win.destroy()
-                    
-
-'''                 
-
-#front end
-
-'''code below
-'''
-'''
-# This will import all the widgets
-# and modules which are available in
-# tkinter and ttk module
-from tkinter import *
-from tkinter.ttk import *
-
-# creates a Tk() object
-master = Tk()
-
-# sets the geometry of main
-# win window
-master.geometry("200x200")
-
-
-# function to open a new window
-# on a button click
-def openNewWindow():
-	
-	# Toplevel object which will
-	# be treated as a new window
-	newWindow = Toplevel(master)
-
-	# sets the title of the
-	# Toplevel widget
-	newWindow.title("New Window")
-
-	# sets the geometry of toplevel
-	newWindow.geometry("200x200")
-
-	# A Label widget to show in toplevel
-	Label(newWindow,
-		text ="This is a new window").pack()
-
-
-label = Label(master,text ="This is the main window")
-
-label.pack(pady = 10)
-
-# a button widget which will open a
-# new window on button click
-btn = Button(master,text ="Click to open a new window",
-command = openNewWindow)
-btn.pack(pady = 10)
-
-# mainloop, runs infinitely
-'''
-'''
-code above
-'''
-
-'''
-class FullScreenApp(object):
-    def __init__(self, master, **kwargs):
-        self.master=master
-        pad=3
-        self._geom='200x200+0+0'
-        master.geometry("{0}x{1}+0+0".format(
-            master.winfo_screenwidth()-pad, master.winfo_screenheight()-pad))
-        master.bind('<Escape>',self.toggle_geom)            
-    def toggle_geom(self,event):
-        geom=self.master.winfo_geometry()
-        print(geom,self._geom)
-        self.master.geometry(self._geom)
-        self._geom=geom
-
-'''    
 
 win=tk.Tk()
 
@@ -156,21 +64,6 @@ win.title("Virtual Notes")
 #menu bar
 menu_bar= Menu(win)
 #submenu
-'''
-fileMenu = Menu(menu_bar, tearoff=0)
-
-
-fileMenu.add_command(label="exit", command=win.destroy)
-fileMenu.add_command(label="kill", command=win.destroy)
-fileMenu.add_command(label="stop", command=win.destroy)
-
-menu_bar.add_cascade(label="File", menu=fileMenu)
-win.config(menu=menu_bar)
-
-'''
-'''
-code below
-'''
 
 file = Menu(menu_bar, tearoff=0)  
 file.add_command(label="New")  
